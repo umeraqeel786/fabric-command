@@ -1,0 +1,43 @@
+
+====================
+
+FAILED TO EXECUTE END 2 END SCENARIO
+
+
+$./byfn.sh down
+$sudo systemctl daemon-reload
+$sudo systemctl restart docker
+$./byfn.sh –m up
+
+===========================
+
+
+
+To clear containers:
+
+    docker rm -f $(docker ps -a -q)
+
+To clear volumes:
+
+    docker volume rm $(docker volume ls -q)
+
+To clear networks:
+
+    docker network rm $(docker network ls | tail -n+2 | awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
+
+
+================================
+
+ START DOCKER:
+
+$ docker start $(docker ps -aq)
+
+=============================
+
+ STOP DOCKER
+
+$ docker start $(docker ps -aq)
+=================================
+
+
+
